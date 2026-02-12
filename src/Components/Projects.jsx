@@ -1,0 +1,92 @@
+import React from 'react'
+import ProjectCard from './ProjectCard'
+import portfolio1 from '../assets/portfolio1.png'
+import colorPicker from "../assets/colorPicker.png"
+import mahakalFinance from "../assets/mahakalFinance.png"
+import SearchEngine from "../assets/SearchEngine.png"
+import moneyTracker from "../assets/moneyTracker.png"
+import samyakClasses from "../assets/samyakClasses.png"
+import AITools from "../assets/AI-Tools.png"
+
+const Projects = () => {
+let ProjectData = [
+  {
+    id: 1,
+    imageSrc: portfolio1,
+    demoLink: "https://sisodiyatech.github.io/MyFirstPortfolio/",
+    codeLink: "https://github.com/SisodiyaTech/MyFirstPortfolio",
+    title: "Portfolio Project",
+    description:
+      "A simple yet powerful portfolio where you can explore who I am, my skills, services, and everything I love to build.",
+  },
+  {
+    id: 2,
+    imageSrc: colorPicker,
+    demoLink: "https://sisodiyatech.github.io/Colors_Picker_byRaz/",
+    codeLink: "https://github.com/SisodiyaTech/Colors_Picker_byRaz",
+    title: "Color Picker",
+    description:
+      "A smart color picker tool that lets you generate beautiful gradient colors instantly. You can copy the ready-to-use CSS styles and apply them directly to your elements for creating stunning backgrounds with ease.",
+  },
+  {
+    id: 3,
+    imageSrc: mahakalFinance,
+    demoLink: "https://sisodiyatech.github.io/MahakalFinance/",
+    codeLink: "https://github.com/SisodiyaTech/MahakalFinance",
+    title: "Mahakal Finance Services",
+    description:
+      "A simple demo finance website created for a client, providing essential finance-related information with a clean and user-friendly interface. The site is built using only HTML, CSS, and JavaScript to deliver a smooth frontend experience.",
+  },
+  {
+    id: 4,
+    imageSrc: SearchEngine,
+    demoLink: "https://sisodiyatech.github.io/GoogleSearch/",
+    codeLink: "https://github.com/SisodiyaTech/GoogleSearch",
+    title: "Search Engine",
+    description:
+      "A simple search tool that works like a mini search engine. Whatever you type and search here is directly processed through Google, and it instantly shows you the relevant results on Google.",
+  },
+  {
+    id: 5,
+    imageSrc: moneyTracker,
+    demoLink: "https://sisodiyatech.github.io/MoneyTracker/",
+    codeLink: "https://github.com/SisodiyaTech/MoneyTracker",
+    title: "Money Tracker",
+    description:
+      "A lightweight money tracker that helps you manage income and expenses, shows your remaining balance, and stores a clear history of all your transactions.",
+  },
+  {
+    id: 6,
+    imageSrc: samyakClasses,
+    demoLink: "https://sisodiyatech.github.io/SamyakClasses/",
+    codeLink: "https://github.com/SisodiyaTech/SamyakClasses",
+    title: "Samyak Computer Classes",
+    description:
+      "A simple, responsive demo website for a computer coaching center, showcasing its services and courses. Built with HTML, CSS, and JavaScript.",
+  },
+  {
+    id: 7,
+    imageSrc: AITools,
+    demoLink: "https://sisodiyatech.github.io/tools/",
+    codeLink: "https://github.com/SisodiyaTech/tools",
+    title: "AI Tools Blog",
+    description:
+      "A responsive blog showcasing AI tools with categorized cards. Users can filter tools by type—Image, Video, UI, Audio, Chat—and explore both free and paid options. Built with HTML, CSS, and JavaScript.",
+  },
+];
+
+  
+  return (
+    <div className='p-1 flex max-w-[1280px] m-auto justify-center flex-col' id='projects'>
+      <h1 className="text-4xl text-center  font-bold">My Projects</h1>
+      <div className='flex flex-row w-full overflow-auto p-5 gap-5 mx-auto'>
+        {
+          ProjectData.map((project, index) => (
+            <ProjectCard key = {project.id} {...project} />
+          ))}
+      </div>
+    </div>
+  )
+}
+
+export default Projects
