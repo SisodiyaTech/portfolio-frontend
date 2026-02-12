@@ -18,7 +18,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/contact",
+      const res = await axios.post("https://portfolio-backend-uhpx.onrender.com/api/contact",
         formData,
         {
           headers: { "Content-Type": "application/json" }
