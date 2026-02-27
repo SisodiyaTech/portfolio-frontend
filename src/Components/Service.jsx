@@ -7,9 +7,9 @@ import Deploy from "./../assets/deployment.jpg"
 
 function Service() {
   return (
-    <div id="Services" className="px-1 py-3 my-5 max-w-[1280px] m-auto">
+    <div id="Services" className="px-1 py-3 my-5 max-w-7xl m-auto">
       <h1 className="text-4xl mb-10 text-center  font-bold">My Services</h1>
-      <div className="flex flex-wrap gap-3 m-auto px-[1%]">
+      <div className="grid lg:grid-cols-5 sm:grid-cols-3 grid-cols-1 gap-5 justify-items-center px-5">
         <Card
           title="UI/UX Design"
           description="I create Mobile-first responsive and modern stylish looks web ui/ux that deliver a smooth user experience."
