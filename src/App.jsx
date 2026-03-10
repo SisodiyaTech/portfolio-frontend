@@ -8,7 +8,7 @@ import Skills from "./Components/Skills.jsx";
 import Contact from "./Components/Contact.jsx";
 import Projects from "./Components/Projects.jsx";
 import Footer from "./Components/Footer.jsx";
-import ColorPalette from "./Components/ColorPalette.jsx";
+
 
 function ScrollLogger() {
   useLenis((lenis) => {
@@ -65,11 +65,6 @@ const App = () => {
       <section>
         <Footer />
       </section>
-
-      <section>
-        <ColorPalette />
-      </section>
-
     </ReactLenis>
   );
 };

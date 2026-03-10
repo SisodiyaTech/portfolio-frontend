@@ -101,7 +101,7 @@ const Projects = () => {
           scrub: 1,
           pin: true,
           anticipatePin: 1,
-          markers: true
+          // markers: true
         }
 
       })
@@ -115,7 +115,7 @@ const Projects = () => {
   return (
     <div className='p-1 w-screen h-screen overflow-hidden flex m-auto justify-center flex-col' id='projects' ref={sectionRef}>
       <h1 className="text-5xl font-bold text-center text-[#6f1d1b] my-10">My Projects</h1>
-      <div className='flex w-max flex-row p-5 gap-5' ref={boxRef}>
+      <div className='flex w-max justify-center flex-row p-5 gap-5' ref={boxRef}>
         {
           ProjectData.map((project, index) => (
             <ProjectCard key={project.id} {...project} />
