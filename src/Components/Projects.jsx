@@ -12,8 +12,7 @@ import AITools from "../assets/AI-Tools.png"
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Projects = () => {
-  let ProjectData = [
+const PROJECT_DATA = [
     {
       id: 1,
       imageSrc: portfolio1,
@@ -79,42 +78,45 @@ const Projects = () => {
     },
   ];
 
+const Projects = () => {
   const boxRef = useRef(null);
   const sectionRef = useRef(null);
+
   useEffect(() => {
+    const box = boxRef.current;
+    const section = sectionRef.current;
+    if (!box || !section) return;
 
     const ctx = gsap.context(() => {
+      const totalWidth = box.scrollWidth;
+      const screenWidth = window.innerWidth;
+      const scrollDistance = Math.max(0, totalWidth - screenWidth);
 
-      const totalWidth = boxRef.current.scrollWidth
-      const screenWidth = window.innerWidth
+      if (scrollDistance <= 0) return;
 
-      gsap.to(boxRef.current, {
-        x: -(totalWidth - screenWidth),
+      gsap.to(box, {
+        x: -scrollDistance,
         ease: "none",
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: section,
           start: "top top",
-          end: () => "+=" + (totalWidth - screenWidth),
-          scrub: 2,
+          end: `+=${scrollDistance}`,
+          scrub: 5,
           pin: true,
           anticipatePin: 1,
-          // markers: true
-        }
+        },
+      });
+    }, section);
 
-      })
-
-    }, sectionRef)
-
-    return () => ctx.revert()
-
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div className='p-1 w-screen h-screen overflow-hidden flex m-auto justify-center flex-col' id='projects' ref={sectionRef}>
       <h1 className="text-5xl font-bold text-center text-[#6f1d1b] my-10">My Projects</h1>
       <div className='flex w-max justify-center flex-row p-5 gap-5' ref={boxRef}>
         {
-          ProjectData.map((project, index) => (
+          PROJECT_DATA.map((project) => (
             <ProjectCard key={project.id} {...project} />
           ))}
       </div>
