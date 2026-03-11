@@ -43,7 +43,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className='bg-[#ffe6a749] flex justify-between px-5 py-3 sticky top-0 left-0 z-50 backdrop-blur-md'>
+        <div className='bg-[#ffe6a749] flex justify-between px-5 py-3 sticky top-0 left-0 z-50 backdrop-blur-md h-[60px]'>
             <h1 className="text-3xl text-[#6f1d1b]">Portfolio</h1>
 
             <div>

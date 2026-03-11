@@ -89,11 +89,8 @@ const Projects = () => {
       const screenWidth = window.innerWidth
 
       gsap.to(boxRef.current, {
-
         x: -(totalWidth - screenWidth),
-
         ease: "none",
-
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
