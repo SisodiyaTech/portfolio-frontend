@@ -95,7 +95,7 @@ const Projects = () => {
           trigger: sectionRef.current,
           start: "top top",
           end: () => "+=" + (totalWidth - screenWidth),
-          scrub: 5,
+          scrub: 2,
           pin: true,
           anticipatePin: 1,
           // markers: true
