@@ -1,26 +1,44 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
-
-* {
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-
+@font-face {
+  font-family: "Medicinal-font";
+  src: url(/src/assets/Fonts/MedicinalFont.otf);
 }
 
-html,
-body {
-  width: 100vw;
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+
+  --color-background: #0a0a0a;
+  --color-foreground: #ffffff;
+  --color-muted: #888888;
+  --color-accent: #ffffff;
 }
 
-body{
-  background-color: #fffbf0;
-  overflow-x: hidden;
-  width: 100vw;
+@layer base {
+  body {
+    /* @apply bg-background text-foreground antialiased selection:bg-white selection:text-black; */
+    /* font-feature-settings: "ss01", "ss02", "cv01", "cv02"; */
+    background-color: #0f0f0f;
+  }
 }
 
-::-webkit-scrollbar {
-  width: 0;
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease;
 }
 
 h1,
@@ -28,15 +46,13 @@ h2,
 h3,
 h4,
 h5,
-h6,
-a {
-  font-family: "Abel", sans-serif;
+h6 {
+  font-family: "Medicinal-font", sans-serif;
+    letter-spacing: normal;
+    font-weight: 400;
 }
 
-h1 {
-  font-weight: 900;
-}
-
-h2 {
-  font-weight: 700;
+input::placeholder,
+textarea::placeholder{
+  color: rgb(51, 51, 51);
 }

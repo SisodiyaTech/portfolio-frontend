@@ -1,72 +1,68 @@
-import React from "react";
-import { ReactLenis, useLenis } from "lenis/react";
-import Navbar from "./Components/Navbar";
-import Hero from "./Components/Hero";
-import About from "./Components/About";
-import Service from "./Components/Service.jsx";
-import Skills from "./Components/Skills.jsx";
-import Contact from "./Components/Contact.jsx";
-import Projects from "./Components/Projects.jsx";
-import Footer from "./Components/Footer.jsx";
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
+import { useEffect } from 'react';
+import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Navbar from './components/Navbar';
+import Hero from './sections/Hero';
+import Services from './sections/Services';
+import Projects from './sections/Projects';
+import About from './sections/About';
+import Process from './sections/Process';
+import Contact from './sections/Contact';
 
-function ScrollLogger() {
-  useLenis((lenis) => {
-    // called every scroll
-    console.log(lenis.scroll);
-  });
+gsap.registerPlugin(ScrollTrigger);
 
-  return null;
-}
+export default function App() {
+  useEffect(() => {
+    // Initialize Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 2.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    });
 
-const App = () => {
+    // Connect Lenis scroll to GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    // Custom cursor logic
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor hidden md:block';
+    document.body.appendChild(cursor);
+
+    const moveCursor = (e) => {
+      cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+    };
+
+    window.addEventListener('mousemove', moveCursor);
+
+    return () => {
+      window.removeEventListener('mousemove', moveCursor);
+      document.body.removeChild(cursor);
+      lenis.destroy();
+      gsap.ticker.remove((time) => lenis.raf(time * 1000));
+    };
+  }, []);
+
   return (
-    <ReactLenis
-      root
-      options={{
-        lerp: 0.05,
-        duration: 2,
-        smoothWheel: true,
-        wheelMultiplier: 0.7,
-        smoothTouch: true,
-        touchMultiplier: 1.5
-      }}
-    >
-      <ScrollLogger />
-
-      <section>
-        <Navbar />
-      </section>
-
-      <section>
-        <Hero />
-      </section>
-
-      <section>
-        <Skills />
-      </section>
-
-      <section>
-        <Service />
-      </section>
-
-      <section>
-        <About />
-      </section>
-
-      <section>
-        <Projects />
-      </section>
-
-      <section>
-        <Contact />
-      </section>
-
-      <section>
-        <Footer />
-      </section>
-    </ReactLenis>
+    <main className="relative bg-background text-foreground selection:bg-white selection:text-black">
+      <Navbar />
+      <Hero />
+      <Services />
+      <Projects />
+      <About />
+      <Process />
+      <Contact />
+    </main>
   );
-};
-
-export default App;
+}
