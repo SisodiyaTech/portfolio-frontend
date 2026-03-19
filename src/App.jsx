@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Navbar from './components/Navbar';
+import Navbar from './Components/Navbar';
 import Hero from './sections/Hero';
 import Services from './sections/Services';
 import Projects from './sections/Projects';
